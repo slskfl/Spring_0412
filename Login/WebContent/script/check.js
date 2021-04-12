@@ -19,3 +19,5 @@ function validation(){
 	}
 	return true;
 }
+
+//이거 저장됩니까?
