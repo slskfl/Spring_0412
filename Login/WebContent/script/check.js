@@ -17,7 +17,25 @@ function validation(){
 		document.frm.passwd.focus();
 		return false;
 	}
+	
+	maskingLogin(); //비밀번호 마스킹 처리 메서드
+	
 	return true;
 }
 
-//이거 저장됩니까?
+function maskingLogin(){
+	var maskingPw=document.frm.passwd.value; //마스킹할 원본 문자
+	var pwLength=maskingPw.length; //마스킹할 원본 문자 길이
+	var result; //마스킹 처리된 문자
+	
+	var front=maskingPw.substr(0,2);//앞 두글자
+	var back=maskingPw.substr((pwLength-2),2); //뒤 두글자
+	for(var i=0; i<pwLength-4; i++){
+		var str='*';
+		front=front.concat(str);
+	}
+	
+	result=front.concat(back);
+	document.frm.passwd.value=result;
+}
+
